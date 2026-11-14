@@ -217,6 +217,13 @@ footer{padding:56px 0 40px;font-size:13px;color:var(--muted);border-top:1px soli
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s,transform .9s}
 .reveal.in{opacity:1;transform:none}
 
+/* compact nav for laptops/tablets */
+@media (max-width:1240px){
+  .nav ul{display:none}
+  .nav ul.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:#fff;padding:24px 32px;gap:20px;border-bottom:1px solid var(--line)}
+  .menu-btn{display:block}
+  .nav{gap:16px}.nav .btn{margin-left:auto}
+}
 /* CTA BAND */
 .cta-band{display:flex;align-items:center;justify-content:space-between;gap:32px;background:var(--accent);color:#fff;padding:44px 56px;text-decoration:none;margin-bottom:10px;transition:background .25s}
 .cta-band:hover{background:var(--accent-d)}
