@@ -77,9 +77,33 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdro
 .logo .wm{border-left:1px solid var(--line);padding-left:14px}
 .logo img.lotus{width:60px;height:auto;flex:none}
 .foot-logo img.lotus{width:78px}
-.nav ul{display:flex;gap:36px;list-style:none;margin:0;padding:0}
-.nav ul a{text-decoration:none;font-size:14px;color:var(--muted);transition:color .2s}
-.nav ul a:hover{color:var(--ink)}
+.nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.nav ul a{position:relative;display:block;text-decoration:none;font-size:15px;color:#4a4845;padding:10px 13px;border-radius:999px;transition:color .2s,background .2s}
+.nav ul a::after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:2px;background:var(--accent);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.nav ul a:hover,.nav ul a:focus-visible,.nav ul a.hot{color:var(--ink);background:var(--soft)}
+.nav ul a:hover::after,.nav ul a:focus-visible::after,.nav ul a.hot::after,.nav ul a.here::after{transform:scaleX(1)}
+.nav ul a.here{color:var(--ink);font-weight:500}
+.nav ul a small{display:none}
+/* hover preview panel */
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(18,18,18,.25);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility 0s .25s}
+.mega.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
+.mega .wrap{display:grid;grid-template-columns:4fr 8fr;gap:48px;padding-top:32px;padding-bottom:32px;align-items:center}
+.mega-t .label{color:var(--accent)}
+.mega-t h3{font-size:30px;font-weight:400;margin:10px 0 10px}
+.mega-t p{color:#4a4845;font-size:17px;line-height:1.5;margin:0 0 22px}
+.mega-t .btn{padding:13px 22px;font-size:15px}
+.mega-m{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mega-m a{display:block;text-decoration:none;color:var(--ink);overflow:hidden}
+.mega-m img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s}
+.mega-m a:hover img{transform:scale(1.05)}
+.mega-m span{display:block;font-size:14px;padding-top:8px}
+.mega-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.mega-steps div{background:var(--soft);padding:22px 18px;font-size:15px;line-height:1.4}
+.mega-steps b{display:block;font:300 34px "Inter Tight",sans-serif;color:var(--accent);margin-bottom:8px}
+.mega-info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mega-info div{background:var(--soft);padding:22px 18px;font-size:16px;line-height:1.45}
+.mega-info dt{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+@media (max-width:1240px),(hover:none){.mega{display:none}}
 .nav .btn{padding:11px 20px;font-size:13px}
 .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--ink)}
 
@@ -220,7 +244,10 @@ footer{padding:56px 0 40px;font-size:13px;color:var(--muted);border-top:1px soli
 /* compact nav for laptops/tablets */
 @media (max-width:1240px){
   .nav ul{display:none}
-  .nav ul.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:#fff;padding:24px 32px;gap:20px;border-bottom:1px solid var(--line)}
+  .nav ul.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:#fff;padding:12px 20px 20px;gap:2px;border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(18,18,18,.25);max-height:calc(100vh - 76px);overflow:auto}
+  .nav ul.open a{font-size:18px;padding:12px 14px;border-radius:10px}
+  .nav ul.open a::after{display:none}
+  .nav ul.open a small{display:block;font-size:14px;color:var(--muted);font-weight:400;margin-top:2px}
   .menu-btn{display:block}
   .nav{gap:16px}.nav .btn{margin-left:auto}
 }
@@ -423,7 +450,6 @@ form .check a,.contact a{color:inherit}
   .store-info{padding:56px 0}
   .map{margin:0 -32px;min-height:360px}
   .nav ul{display:none}
-  .nav ul.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:#fff;padding:24px 32px;gap:20px;border-bottom:1px solid var(--line)}
   .menu-btn{display:block}
   .nav .btn{display:none}
   .foot{grid-template-columns:1fr 1fr}
@@ -478,19 +504,20 @@ form .check a,.contact a{color:inherit}
       <span class="wm"><b>MÓVEIS MANDALA</b><small>Camas rebatíveis · Odivelas</small></span>
     </a>
     <ul id="menu">
-      <li><a href="#colecao">Coleção</a></li>
-      <li><a href="#produtos">Produtos</a></li>
-      <li><a href="#como">Como funciona</a></li>
-      <li><a href="#reels">Reels</a></li>
-      <li><a href="#galeria">Galeria</a></li>
-      <li><a href="#comprar">Como comprar</a></li>
-      <li><a href="#loja">Loja</a></li>
+      <li><a href="#colecao" data-mega="colecao">Coleção<small>As nossas camas rebatíveis</small></a></li>
+      <li><a href="#produtos" data-mega="produtos">Produtos<small>Sofás, quartos, roupeiros e colchões</small></a></li>
+      <li><a href="#como" data-mega="como">Como funciona<small>De sala a quarto num gesto</small></a></li>
+      <li><a href="#reels" data-mega="reels">Reels<small>Vídeos curtos das camas</small></a></li>
+      <li><a href="#galeria" data-mega="galeria">Galeria<small>Fotografias de casas reais</small></a></li>
+      <li><a href="#comprar" data-mega="comprar">Como comprar<small>4 passos simples</small></a></li>
+      <li><a href="#loja" data-mega="loja">Loja<small>Morada e horário em Odivelas</small></a></li>
     </ul>
     <a class="btn btn-red" href="#contacto" data-visit>Marcar visita</a>
     <button class="menu-btn" aria-label="Abrir menu" onclick="document.getElementById('menu').classList.toggle('open')">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h18M3 16h18"/></svg>
     </button>
   </div>
+  <div class="mega" id="mega" aria-hidden="true"><div class="wrap" id="megaIn"></div></div>
 </header>
 
 <main>
@@ -931,6 +958,57 @@ prodGrid.addEventListener('click',e=>{const f=e.target.closest('figure');if(!f)r
 // footer product links open the right tab
 document.querySelectorAll('[data-cat-link]').forEach(a=>a.addEventListener('click',()=>showCat(a.dataset.catLink)));
 showCat('sofas');
+
+
+/* ---------- NAV: hover preview + current section ---------- */
+(()=>{
+  const menu=document.getElementById('menu'), mega=document.getElementById('mega'), megaIn=document.getElementById('megaIn');
+  const arrow='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const pics=(href,list)=>`<div class="mega-m">${list.map(([src,t])=>`<a href="${href}"><img src="${src}" alt="" loading="lazy"><span>${t}</span></a>`).join('')}</div>`;
+  const P={
+    colecao:{l:'Coleção',h:'Camas rebatíveis',p:'De casal e de solteiro, na vertical ou na horizontal. Veja cada cama fechada e aberta.',b:'Ver as camas',m:pics('#colecao',[[IMG(9),'Casal + sofá'],[IMG(14),'Juvenil + secretária'],[IMG(25),'Casal de canto']])},
+    produtos:{l:'Produtos',h:'Tudo para a sua casa',p:'Além das camas, temos sofás, quartos, roupeiros e colchões.',b:'Ver os produtos',m:pics('#produtos',[['img/cat/sofas-3.webp','Sofás'],['img/cat/roupeiros-1.webp','Roupeiros'],['img/cat/colchoes-6.webp','Colchões']])},
+    como:{l:'Como funciona',h:'De dia sala, à noite quarto',p:'A cama fica guardada na parede. Abre e fecha com uma mão, sem esforço.',b:'Ver como funciona',m:pics('#como',[[IMG(21),'De dia'],[IMG(22),'À noite']])},
+    reels:{l:'Reels',h:'Veja a funcionar',p:'Vídeos curtos das nossas camas a abrir e a fechar.',b:'Ver os vídeos',m:pics('#reels',[['reels/r10.jpg','Vídeo'],['reels/r11.jpg','Vídeo'],['reels/r12.jpg','Vídeo']])},
+    galeria:{l:'Galeria',h:'Casas reais',p:'Fotografias de camas que já montámos em casa dos nossos clientes.',b:'Ver a galeria',m:pics('#galeria',[[IMG(3),''],[IMG(5),''],[IMG(15),'']])},
+    comprar:{l:'Como comprar',h:'4 passos simples',p:'Sem complicações. Nós tratamos de tudo, até à montagem.',b:'Ver os passos',m:'<div class="mega-steps"><div><b>1</b>Visite a loja ou fale connosco</div><div><b>2</b>Tiramos as medidas</div><div><b>3</b>Escolhe o modelo e a cor</div><div><b>4</b>Entregamos e montamos</div></div>'},
+    loja:{l:'Loja',h:'Visite-nos em Odivelas',p:'Venha ver as camas a funcionar, junto ao metro.',b:'Ver morada e mapa',m:'<dl class="mega-info"><div><dt>Morada</dt>Rua Prof. Dr. Egas Moniz, 11 A/B<br>Odivelas</div><div><dt>Seg — Sex</dt>15:00 — 19:30</div><div><dt>Sábado</dt>10:30 — 13:30<br>15:00 — 19:30</div></dl>'}
+  };
+  // fix the galeria thumbs: no empty captions
+  P.galeria.m=P.galeria.m.replace(/<span><\/span>/g,'');
+  const links=[...menu.querySelectorAll('a[data-mega]')];
+  let t=null, cur=null;
+  const desktop=()=>matchMedia('(min-width:1241px) and (hover:hover)').matches;
+  function show(a){
+    clearTimeout(t);
+    if(!desktop())return;
+    const k=a.dataset.mega, d=P[k];
+    if(cur!==k){
+      megaIn.innerHTML=`<div class="mega-t"><span class="label">${d.l}</span><h3>${d.h}</h3><p>${d.p}</p><a class="btn btn-red" href="${a.getAttribute('href')}">${d.b} ${arrow}</a></div>${d.m}`;
+      cur=k;
+    }
+    links.forEach(x=>x.classList.toggle('hot',x===a));
+    mega.classList.add('open');mega.setAttribute('aria-hidden','false');
+  }
+  function hide(now){
+    clearTimeout(t);
+    t=setTimeout(()=>{mega.classList.remove('open');mega.setAttribute('aria-hidden','true');links.forEach(x=>x.classList.remove('hot'))},now?0:180);
+  }
+  links.forEach(a=>{
+    a.addEventListener('mouseenter',()=>{clearTimeout(t);t=setTimeout(()=>show(a),mega.classList.contains('open')?0:120)});
+    a.addEventListener('mouseleave',()=>hide());
+    a.addEventListener('click',()=>{hide(true);menu.classList.remove('open')});
+  });
+  mega.addEventListener('mouseenter',()=>clearTimeout(t));
+  mega.addEventListener('mouseleave',()=>hide());
+  mega.addEventListener('click',e=>{if(e.target.closest('a'))hide(true)});
+  addEventListener('keydown',e=>{if(e.key==='Escape')hide(true)});
+  addEventListener('scroll',()=>{if(mega.classList.contains('open')&&!mega.matches(':hover')&&!menu.matches(':hover'))hide(true)},{passive:true});
+  // highlight the section the visitor is in
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id='#'+e.target.id;links.forEach(a=>a.classList.toggle('here',a.getAttribute('href')===id))}})},{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>io.observe(s));
+})();
 
 /* ---------- MODALS (shared) ---------- */
 const WA='351933507734';
