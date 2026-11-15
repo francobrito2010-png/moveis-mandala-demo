@@ -43,18 +43,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FFFFFF; --soft:#F6F5F2; --ink:#121212; --muted:#6D6B67; --line:#E5E3DE;
+  --bg:#FFFFFF; --soft:#F6F5F2; --ink:#121212; --muted:#5C5A56; --line:#E5E3DE;
   --accent:#C1272D; --accent-d:#9E1F24;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;font-weight:400;letter-spacing:-.025em;line-height:1.05;margin:0}
 p{margin:0}
 a{color:inherit}
 img{display:block;max-width:100%}
 .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
-.label{font:500 11.5px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px}
+.label{font:500 12px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px}
 .label::before{content:"";width:28px;height:2px;background:var(--accent)}
 .btn{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--ink);padding:15px 26px;font:500 14px Inter,sans-serif;letter-spacing:.02em;cursor:pointer;text-decoration:none;transition:background .25s,color .25s;border-radius:0;background:transparent;color:var(--ink)}
 .btn-dark{background:var(--ink);color:#fff}
@@ -141,6 +141,7 @@ section{padding:120px 0}
 .tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:40px;gap:32px;overflow-x:auto;scrollbar-width:none}
 .tabs button{border:0;background:none;padding:0 0 16px;font:500 14px Inter,sans-serif;color:var(--muted);cursor:pointer;border-bottom:1px solid transparent;margin-bottom:-1px;white-space:nowrap}
 .tabs button[aria-pressed="true"]{color:var(--ink);border-color:var(--accent);border-bottom-width:2px}
+@media (max-width:640px){.tabs .count{display:none}}
 .tabs .count{margin-left:auto;color:var(--muted);font-size:13px;padding-bottom:16px;white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 28px}
 .card.hidden{display:none}
@@ -152,7 +153,7 @@ section{padding:120px 0}
 .card .meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:20px;gap:12px}
 .card h3{font-size:22px;font-weight:400}
 .card .ref{font-size:12px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
-.card p{color:var(--muted);font-size:14px;margin-top:8px}
+.card p{color:var(--muted);font-size:15px;margin-top:8px}
 .card dl{display:grid;grid-template-columns:repeat(3,1fr);margin:18px 0 0;border-top:1px solid var(--line)}
 .card dl div{padding-top:12px}
 .card dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -341,7 +342,7 @@ form .check a,.contact a{color:inherit}
 .fit-item div{padding:10px 12px}
 .fit-item b{display:block;font-weight:500;font-size:13.5px;line-height:1.3}
 .fit-item small{color:var(--muted);font-size:11.5px}
-.fit-item.no{opacity:.35}
+.fit-item.no{opacity:.6}.fit-item.no img{filter:grayscale(1)}
 .fit-item .ok{color:#2f7d4f}
 .fit-empty{grid-column:1/-1;background:#fff;border:1px dashed var(--line);padding:24px;color:var(--muted);font-size:14px}
 /* MODALS */
@@ -463,7 +464,7 @@ form .check a,.contact a{color:inherit}
   .contact{padding:48px 20px}
   form{grid-template-columns:1fr}
   .gal{grid-auto-rows:110px}
-  .g1{grid-column:span 12;grid-row:span 2}.g2,.g3,.g4,.g5,.g6,.g7,.g8{grid-column:span 6;grid-row:span 1}
+  .g1{grid-column:span 12;grid-row:span 2}.g2,.g3,.g4,.g5,.g6,.g7{grid-column:span 6;grid-row:span 1}.g8{grid-column:span 12;grid-row:span 2}
   .hero-facts b{font-size:18px}
   .state button{padding:10px 12px}
   .hero-media .ref{display:none}
@@ -556,7 +557,7 @@ form .check a,.contact a{color:inherit}
 <section id="colecao">
   <div class="wrap">
     <div class="head reveal">
-      <div><span class="label">01 — Coleção</span><h2>Uma cama para <strong>cada parede.</strong></h2></div>
+      <div><span class="label">Coleção</span><h2>Uma cama para <strong>cada parede.</strong></h2></div>
       <p>Passe o rato (ou toque) em cada modelo para o ver aberto. Todos estão disponíveis em várias medidas e acabamentos.</p>
     </div>
     <div class="tabs" role="group" aria-label="Filtrar modelos">
@@ -577,10 +578,10 @@ form .check a,.contact a{color:inherit}
       <div class="fit-l">
         <span class="label">Que cama cabe na sua parede?</span>
         <h2>Meça a parede. <strong>Nós dizemos o resto.</strong></h2>
-        <p>Indique a largura da parede e a altura do tecto. Mostramos os modelos que cabem — e, se nenhum couber, fazemos à medida.</p>
+        <p>Indique a largura da parede e a altura do teto. Mostramos os modelos que cabem — e, se nenhum couber, fazemos à medida.</p>
         <div class="fit-fields">
-          <label>Largura da parede<span><input id="fitW" type="number" inputmode="numeric" min="80" max="600" value="250"> cm</span></label>
-          <label>Altura do tecto<span><input id="fitH" type="number" inputmode="numeric" min="100" max="400" value="250"> cm</span></label>
+          <label>Largura da parede<span><input id="fitW" type="number" inputmode="numeric" min="80" max="600" value="200"> cm</span></label>
+          <label>Altura do teto<span><input id="fitH" type="number" inputmode="numeric" min="100" max="400" value="250"> cm</span></label>
         </div>
         <small class="fit-note">Medidas aproximadas, apenas indicativas. Confirmamos sempre na loja ou numa visita.</small>
       </div>
@@ -617,7 +618,7 @@ form .check a,.contact a{color:inherit}
 <section id="como" class="how">
   <div class="wrap">
     <div class="head reveal">
-      <div><span class="label">02 — Como funciona</span><h2>O mesmo quarto, <strong>duas vidas.</strong></h2></div>
+      <div><span class="label">Como funciona</span><h2>O mesmo quarto, <strong>duas vidas.</strong></h2></div>
       <p>A cama gira sobre uma dobradiça na base do móvel. Pistões equilibram o peso, por isso abre e fecha suavemente, sem esforço.</p>
     </div>
     <div class="pair reveal">
@@ -637,7 +638,7 @@ form .check a,.contact a{color:inherit}
     <div class="head reveal">
       <div><span class="label">Reels — Instalações reais</span><h2>Veja-as <strong>a funcionar.</strong></h2></div>
       <div class="reels-ctrl">
-        <p>Montagens feitas pela nossa equipa em casas de clientes. Passe o rato para pré-visualizar, clique para ver com som.</p>
+        <p>Montagens feitas pela nossa equipa em casas de clientes. Carregue num vídeo para o ver com som.</p>
         <div class="arrows"><button class="arr" data-d="-1" aria-label="Anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12H4M10 6l-6 6 6 6"/></svg></button><button class="arr" data-d="1" aria-label="Seguinte"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button></div>
       </div>
     </div>
@@ -649,7 +650,7 @@ form .check a,.contact a{color:inherit}
 <section id="galeria" style="padding-top:0">
   <div class="wrap">
     <div class="head reveal">
-      <div><span class="label">03 — Galeria</span><h2>Ideias para <strong>casas reais.</strong></h2></div>
+      <div><span class="label">Galeria</span><h2>Ideias para <strong>casas reais.</strong></h2></div>
       <p>Salas, escritórios, quartos jovem e estúdios. Clique numa imagem para a ver em grande.</p>
     </div>
     <div class="gal reveal" id="gal"></div>
@@ -685,7 +686,7 @@ form .check a,.contact a{color:inherit}
 <div class="wrap" id="loja">
   <div class="store">
     <div class="store-info reveal">
-      <span class="label">04 — A nossa loja</span>
+      <span class="label">A nossa loja</span>
       <h2>Experimente <strong>antes de comprar.</strong></h2>
       <dl>
         <dt>Morada</dt><dd>Rua Prof. Dr. Egas Moniz, 11 A/B<br>2675-344 Odivelas — junto ao metro</dd>
@@ -708,7 +709,7 @@ form .check a,.contact a{color:inherit}
 
 <section id="faq">
   <div class="wrap faq">
-    <div class="reveal"><span class="label">05 — Dúvidas</span><h2>Perguntas <strong>frequentes.</strong></h2></div>
+    <div class="reveal"><span class="label">Dúvidas</span><h2>Perguntas <strong>frequentes.</strong></h2></div>
     <div class="reveal">
       <details open><summary>É seguro? E se cair?</summary><p>O móvel é fixado à parede pela nossa equipa e o mecanismo é equilibrado ao peso da cama, por isso não cai nem dispara. Fechada, a cama fica presa dentro do móvel.</p></details>
       <details><summary>Preciso de fazer obras?</summary><p>Não. Basta uma parede capaz de receber a fixação. Fazemos a entrega ao domicílio e a montagem no local.</p></details>
@@ -722,9 +723,9 @@ form .check a,.contact a{color:inherit}
 <div class="wrap" id="contacto">
   <div class="contact reveal">
     <div>
-      <span class="label">06 — Orçamento</span>
+      <span class="label">Orçamento</span>
       <h2>Conte-nos sobre <strong>o seu espaço.</strong></h2>
-      <p class="sub">Envie as medidas da parede e o modelo que procura. O pedido segue directamente para o nosso WhatsApp — respondemos com sugestões e preço, sem compromisso.</p>
+      <p class="sub">Envie as medidas da parede e o modelo que procura. O pedido segue diretamente para o nosso WhatsApp — respondemos com sugestões e preço, sem compromisso.</p>
       <div class="alt">
         <a href="https://wa.me/351933507734" target="_blank" rel="noopener">WhatsApp <span>93 350 77 34 ↗</span></a>
         <a href="tel:+351213544336">Telefone <span>21 354 43 36</span></a>
@@ -737,7 +738,7 @@ form .check a,.contact a{color:inherit}
       <div><label for="modelSel">Modelo</label><select id="modelSel"><option>Ainda não sei</option></select></div>
       <div><label for="f4">Largura da parede (cm)</label><input id="f4" inputmode="numeric"></div>
       <div class="full"><label for="f5">Mensagem</label><textarea id="f5" placeholder="Ex.: sala de 3×4 m, procuro cama de casal com sofá"></textarea></div>
-      <label class="full check"><input type="checkbox" id="f6" required> Aceito que os meus dados sejam usados para responder a este pedido (<a href="privacidade.html">Política de Privacidade</a>).</label>
+      <label class="full check"><input type="checkbox" id="f6" required><span>Aceito que os meus dados sejam usados para responder a este pedido (<a href="privacidade.html">Política de Privacidade</a>).</span></label>
       <button class="btn full" type="submit">Enviar pelo WhatsApp <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
     </form>
   </div>
@@ -971,7 +972,7 @@ showCat('sofas');
     como:{l:'Como funciona',h:'De dia sala, à noite quarto',p:'A cama fica guardada na parede. Abre e fecha com uma mão, sem esforço.',b:'Ver como funciona',m:pics('#como',[[IMG(21),'De dia'],[IMG(22),'À noite']])},
     reels:{l:'Reels',h:'Veja a funcionar',p:'Vídeos curtos das nossas camas a abrir e a fechar.',b:'Ver os vídeos',m:pics('#reels',[['reels/r10.jpg','Vídeo'],['reels/r11.jpg','Vídeo'],['reels/r12.jpg','Vídeo']])},
     galeria:{l:'Galeria',h:'Casas reais',p:'Fotografias de camas que já montámos em casa dos nossos clientes.',b:'Ver a galeria',m:pics('#galeria',[[IMG(3),''],[IMG(5),''],[IMG(15),'']])},
-    comprar:{l:'Como comprar',h:'4 passos simples',p:'Sem complicações. Nós tratamos de tudo, até à montagem.',b:'Ver os passos',m:'<div class="mega-steps"><div><b>1</b>Visite a loja ou fale connosco</div><div><b>2</b>Tiramos as medidas</div><div><b>3</b>Escolhe o modelo e a cor</div><div><b>4</b>Entregamos e montamos</div></div>'},
+    comprar:{l:'Como comprar',h:'4 passos simples',p:'Do primeiro contacto à primeira noite. A mesma equipa trata de tudo, até à montagem.',b:'Ver os passos',m:'<div class="mega-steps"><div><b>1</b>Visite ou envie uma foto</div><div><b>2</b>Proposta à medida</div><div><b>3</b>Preparação</div><div><b>4</b>Entrega e montagem</div></div>'},
     loja:{l:'Loja',h:'Visite-nos em Odivelas',p:'Venha ver as camas a funcionar, junto ao metro.',b:'Ver morada e mapa',m:'<dl class="mega-info"><div><dt>Morada</dt>Rua Prof. Dr. Egas Moniz, 11 A/B<br>Odivelas</div><div><dt>Seg — Sex</dt>15:00 — 19:30</div><div><dt>Sábado</dt>10:30 — 13:30<br>15:00 — 19:30</div></dl>'}
   };
   // fix the galeria thumbs: no empty captions
@@ -1008,6 +1009,7 @@ showCat('sofas');
   const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id='#'+e.target.id;links.forEach(a=>a.classList.toggle('here',a.getAttribute('href')===id))}})},{rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(s=>io.observe(s));
+  addEventListener('scroll',()=>{if(scrollY<300)links.forEach(a=>a.classList.remove('here'))},{passive:true});
 })();
 
 /* ---------- MODALS (shared) ---------- */
